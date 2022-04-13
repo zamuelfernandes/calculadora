@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,94 +12,83 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      //debugShowCheckedModeBanner: false, // REMOVER A ETIQUETA DEBUG
+
+      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  double space = 5;
-  Size tam = const Size(20, 20);
-
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.black,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          TextField(
-            decoration: InputDecoration(border: InputBorder.none),
-          ),
-          const SizedBox(height: 20),
-          //ROW DE BOTÕES ----------------------------------------
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextButton(
-                onPressed: () {},
-                style: TextButton.styleFrom(
-                  backgroundColor: Colors.grey,
-                  fixedSize: tam,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                ),
-                child: const Text('%'),
-              ),
-              SizedBox(width: space),
-              TextButton(
-                onPressed: () {},
-                style: TextButton.styleFrom(
-                  backgroundColor: Colors.grey,
-                  fixedSize: tam,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                ),
-                child: const Text('%'),
-              ),
-              SizedBox(width: space),
-              TextButton(
-                onPressed: () {},
-                style: TextButton.styleFrom(
-                  backgroundColor: Colors.grey,
-                  fixedSize: tam,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                ),
-                child: const Text('%'),
-              ),
-              SizedBox(width: space),
-              TextButton(
-                onPressed: () {},
-                style: TextButton.styleFrom(
-                  backgroundColor: Colors.grey,
-                  fixedSize: tam,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                ),
-                child: const Text('%'),
-              ),
-            ],
-          ),
-        ],
-      ),
+    double buttonSpace = 20;
+    Size buttonSize = const Size(70, 70);
+    TextStyle buttonStyle = const TextStyle(
+      color: Colors.white,
+      fontSize: 30,
     );
+
+    return Scaffold(
+        backgroundColor: Colors.black,
+        //ROW DE BOTÕES ----------------------------------------
+        body: Container(
+            child: Column(
+          children: [
+            const SizedBox(height: 100),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextButton(
+                  onPressed: () {},
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.transparent,
+                    fixedSize: buttonSize,
+                    shape: RoundedRectangleBorder(
+                      side: const BorderSide(
+                        color: Colors.white,
+                        width: 2,
+                      ),
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                  ),
+                  child: const Text(
+                    '%',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 30,
+                    ),
+                  ),
+                ),
+                SizedBox(width: buttonSpace),
+                TextButton(
+                  onPressed: () {},
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.transparent,
+                    fixedSize: buttonSize,
+                    shape: RoundedRectangleBorder(
+                      side: const BorderSide(color: Colors.white, width: 2),
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                  ),
+                  child: const Text(
+                    '%',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 30,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        )));
   }
 }
