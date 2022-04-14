@@ -11,8 +11,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      //debugShowCheckedModeBanner: false, // REMOVER A ETIQUETA DEBUG
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false, // REMOVER A ETIQUETA DEBUG
 
       home: MyHomePage(),
     );
@@ -29,23 +29,50 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    double buttonSpace = 20;
-    Size buttonSize = const Size(70, 70);
-    TextStyle buttonStyle = const TextStyle(
-      color: Colors.white,
+    double buttonSpace = 5;
+    Size buttonSize = const Size(60, 70);
+    const buttonStyle = TextStyle(
+      color: Colors.black,
       fontSize: 30,
     );
 
     return Scaffold(
-        backgroundColor: Colors.black,
-        //ROW DE BOTÕES ----------------------------------------
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          centerTitle: true,
+          title: const Text(
+            'CALCULADORA',
+            textAlign: TextAlign.justify,
+            style: TextStyle(color: Colors.white),
+          ),
+          backgroundColor: Colors.black,
+        ),
         body: Container(
             child: Column(
           children: [
-            const SizedBox(height: 100),
+            //NUMBER FIELD ----------------------------------
+            const Padding(
+              padding: EdgeInsets.only(
+                left: 10,
+                right: 10,
+                top: 20,
+              ),
+              child: TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                    Radius.circular(15),
+                  )),
+                  hintText: 'Valor',
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            //ROW DE BOTÕES ----------------------------------------
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                //BOTÃO 1 ------------------------------------
                 TextButton(
                   onPressed: () {},
                   style: TextButton.styleFrom(
@@ -53,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     fixedSize: buttonSize,
                     shape: RoundedRectangleBorder(
                       side: const BorderSide(
-                        color: Colors.white,
+                        color: Colors.black,
                         width: 2,
                       ),
                       borderRadius: BorderRadius.circular(25),
@@ -61,29 +88,27 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   child: const Text(
                     '%',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                    ),
+                    style: buttonStyle,
                   ),
                 ),
                 SizedBox(width: buttonSpace),
+                //BOTÃO 2 ------------------------------------
                 TextButton(
                   onPressed: () {},
                   style: TextButton.styleFrom(
                     backgroundColor: Colors.transparent,
                     fixedSize: buttonSize,
                     shape: RoundedRectangleBorder(
-                      side: const BorderSide(color: Colors.white, width: 2),
+                      side: const BorderSide(
+                        color: Colors.black,
+                        width: 2,
+                      ),
                       borderRadius: BorderRadius.circular(25),
                     ),
                   ),
                   child: const Text(
                     '%',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                    ),
+                    style: buttonStyle,
                   ),
                 ),
               ],
